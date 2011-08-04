@@ -1,0 +1,93 @@
+<!DOCTYPE html>  
+<!--[if lt IE 7 ]><html lang="en" class="ie ie6"><![endif]-->
+<!--[if IE 7 ]><html lang="en" class="ie ie7"><![endif]-->
+<!--[if IE 8 ]><html lang="en" class="ie ie8"><![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"><!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+	<meta name="description" content="" />
+	<script type="text/javascript" charset="utf-8" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+	<link rel="stylesheet" href="main.css" type="text/css" charset="utf-8" />
+	
+	
+	<script type="text/javascript" charset="utf-8" src="google_custom_search/handlebars.1.0.0.beta.3.js"></script>
+	<script type="text/javascript" charset="utf-8" src="google_custom_search/jquery.google_custom_search.v0.1.js"></script>
+	<link rel="stylesheet" href="google_custom_search/styles/standard/google_search.css" type="text/css" charset="utf-8" />
+	
+	<script type="text/javascript" charset="utf-8">
+		jQuery(function($) {
+			var options = {
+				google_custom_search_api_key: 'AIzaSyAE8K1nAjk4uxT9YLYwxjWUiOeqQiwRTrU',
+				google_custom_search_cx: '007448464623977363135:mbxzmnwlble',
+				input_selector: '#google_search_q',
+				search_results_selector: '#google_search_results',
+				search_results_template_selector: '#google_search_template'
+			};
+			
+			$('#google_search_form').google_custom_search(options);
+		});
+	</script>
+
+
+</head>
+<body>
+	<div id="wrapper">
+		<form action="" method="get" id="google_search_form" accept-charset="utf-8">
+			<p><label for="google_search_q">Google Search: </label> &nbsp; <input type="text" name="google_search_q" value="" id="google_search_q" /></p>
+			<p style="padding: 20px 0;"><input type="submit" value="Continue &rarr;" /></p>
+		</form>
+		
+		<div id="google_search_results"></div>
+
+		<script id="google_search_template" type="text/x-handlebars-template">
+			{{#if error}}
+				<p class="google_search_notice">{{{error}}}</p>
+			{{else}}
+				{{#if item_count}}
+					<div class="google_search_pager_wrapper">
+						{{#if pager}}
+							<p class="google_search_pager">
+								<a{{#if pager.prev}} href="javascript:;" data-start="{{pager.prev}}" class="google_search_pager_prev"{{else}}class="google_search_pager_prev inactive"{{/if}}>Prev</a>
+								
+								<a{{#if pager.next}} href="javascript:;" data-start="{{pager.next}}" class="google_search_pager_next" {{else}}class="google_search_pager_next inactive"{{/if}}>Next</a>
+							</p>
+						{{/if}}
+						<p class="google_search_pager_details">Displaying {{item_offset}} - {{item_offset_end}} of ~{{item_count}} items</p>
+					</div>
+					
+				{{/if}}
+
+				<div class="google_search_items">
+					{{#if items}}
+						{{#each items}}
+							<div class="google_search_item">
+								<h5>{{{title}}}</h5>
+								<p>{{{description}}}</p>
+								<p class="google_search_item_url"><a href="{{link}}">{{link}}</a></p>
+							</div>
+			  			{{/each}}
+					{{else}}
+						<p class="google_search_notice">Your search did not return any results.</p>
+					{{/if}}
+				</div>
+
+				{{#if item_count}}
+					<div class="google_search_pager_wrapper">
+						{{#if pager}}
+							<p class="google_search_pager">
+								<a{{#if pager.prev}} href="javascript:;" data-start="{{pager.prev}}" class="google_search_pager_prev"{{else}}class="google_search_pager_prev inactive"{{/if}}>Prev</a>
+							
+								<a{{#if pager.next}} href="javascript:;" data-start="{{pager.next}}" class="google_search_pager_next" {{else}}class="google_search_pager_next inactive"{{/if}}>Next</a>
+							</p>
+						{{/if}}
+						<p class="google_search_pager_details">Displaying {{item_offset}} - {{item_offset_end}} of ~{{item_count}} items</p>
+					</div>
+					
+				{{/if}}
+
+			{{/if}}
+		</script>
+	</div>
+  </body>
+</html>

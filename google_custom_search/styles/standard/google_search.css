@@ -1,0 +1,43 @@
+#google_search_results {
+	padding: 20px 0;
+	width: 700px;
+}
+
+#google_search_results p {
+	line-height: 1.5;
+}
+
+#google_search_results h5 {
+	font-weight: normal;
+	font-size: 16px;
+	padding-bottom: 6px;
+}
+
+.google_search_item {
+	padding-bottom: 20px;
+}
+
+#google_search_results p.google_search_item_url {
+	font-size: 10px;
+}
+
+.google_search_pager_wrapper {
+	padding-bottom: 20px;
+}
+
+.google_search_pager {
+	float: right;	
+}
+
+.google_search_pager a.disabled:link, .google_search_pager a.disabled:visited, .google_search_pager a.disabled:hover {
+	color: #333;
+	text-decoration: none;
+}
+
+.google_search_pager a:hover {
+	text-decoration: none;
+}
+
+p.google_search_notice {
+	padding-bottom: 20px;
+}
