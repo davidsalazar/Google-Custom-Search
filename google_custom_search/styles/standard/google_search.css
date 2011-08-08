@@ -48,3 +48,9 @@
 p.google_search_notice {
 	padding-bottom: 20px;
 }
+
+h2.google_search_results_title {
+	font-size: 18px;
+	font-weight: bold;
+	padding-bottom: 10px;
+}

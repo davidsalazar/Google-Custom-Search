@@ -81,7 +81,7 @@
 						});							
 					}
 					
-					$search_results.html(google_search_template({'pager': pager, 'items': items.length ? items : false, 'item_count': item_count, 'item_offset': start, 'item_offset_end': start + Math.min(item_count - start, 9)}));
+					$search_results.html(google_search_template({'search_q': new_search_args.q, 'pager': pager, 'items': items.length ? items : false, 'item_count': item_count, 'item_offset': start, 'item_offset_end': start + Math.min(item_count - start, 9)}));
 					toggle_loader($search_results, $search_results_loading);
 				}
 		
