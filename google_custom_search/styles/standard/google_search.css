@@ -1,6 +1,13 @@
 #google_search_results {
 	padding: 20px 0;
-	width: 700px;
+/*	width: 700px;*/
+}
+
+#google_search_results_loading {
+/*	width: 700px;*/
+	padding: 20px 0;
+	background: url('loading.gif') top center no-repeat;
+	height: 11px;
 }
 
 #google_search_results p {

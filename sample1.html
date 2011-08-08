@@ -38,7 +38,9 @@
 			<p style="padding: 20px 0;"><input type="submit" value="Continue &rarr;" /></p>
 		</form>
 		
-		<div id="google_search_results"></div>
+		<div id="google_search_results_loading" style="display: none;"></div>
+		<div id="google_search_results">
+		</div>
 
 		<script id="google_search_template" type="text/x-handlebars-template">
 			{{#if error}}
@@ -62,8 +64,8 @@
 					{{#if items}}
 						{{#each items}}
 							<div class="google_search_item">
-								<h5>{{{title}}}</h5>
-								<p>{{{description}}}</p>
+								<h5>{{{title_html}}}</h5>
+								<p>{{{description_html}}}</p>
 								<p class="google_search_item_url"><a href="{{link}}">{{link}}</a></p>
 							</div>
 			  			{{/each}}

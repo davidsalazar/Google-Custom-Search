@@ -8,7 +8,8 @@
 			google_custom_search_cx: '',
 			input_selector: '#google_search_q',
 			search_results_selector: '#google_search_results',
-			search_results_template_selector: '#google_search_template'
+			search_results_template_selector: '#google_search_template',
+			no_br: true
 		};
 
 		if (options)
@@ -30,6 +31,14 @@
 			return true;
 		};
 		
+		var toggle_loader = function($search_results, $search_results_loading) {
+			if ($search_results_loading.length)
+			{
+				$search_results_loading.toggle();
+				$search_results.toggle();	
+			}
+		};
+		
 		var googlesearch = function(start) {
 			var new_search_args = google_search_args;
 			var start = Math.abs(parseInt(start));
@@ -41,6 +50,11 @@
 				}
 				else
 				{
+					var $search_results = $(settings.search_results_selector);
+					var $search_results_loading = $(settings.search_results_selector + '_loading');
+					
+					toggle_loader($search_results, $search_results_loading);
+					
 					var pager = {
 						'prev': results.queries.previousPage ? results.queries.previousPage[0].startIndex : null,
 						'next': results.queries.nextPage ? results.queries.nextPage[0].startIndex : null,
@@ -56,15 +70,22 @@
 					if (results.items)
 					{
 						$.each(results.items, function(k, v) {
-							items.push({'title': v.htmlTitle, 'description': v.htmlSnippet, 'link': v.link});
+							if (settings.no_br)
+							{
+								items.push({'title_html': v.htmlTitle.replace(/<br( ?\/)?>/i, ''), 'description_html': v.htmlSnippet.replace(/<br( ?\/)?>/i, ''), 'title': v.title, 'description': v.snippet, 'link': v.link});
+							}
+							else
+							{
+								items.push({'title_html': v.htmlTitle, 'description_html': v.htmlSnippet, 'title': v.title, 'description': v.snippet, 'link': v.link});	
+							}
 						});							
 					}
 					
-					$(settings.search_results_selector).html(google_search_template({'pager': pager, 'items': items.length ? items : false, 'item_count': item_count, 'item_offset': start, 'item_offset_end': start + Math.min(item_count - start, 9)}));
-								
+					$search_results.html(google_search_template({'pager': pager, 'items': items.length ? items : false, 'item_count': item_count, 'item_offset': start, 'item_offset_end': start + Math.min(item_count - start, 9)}));
+					toggle_loader($search_results, $search_results_loading);
 				}
 		
-				// console.log(results);
+				console.log(results);
 			});
 		}
 
