@@ -1,10 +1,10 @@
 #google_search_results {
 	padding: 20px 0;
-/*	width: 700px;*/
+	width: 600px;
 }
 
 #google_search_results_loading {
-/*	width: 700px;*/
+	width: 600px;
 	padding: 20px 0;
 	background: url('loading.gif') top center no-repeat;
 	height: 11px;
